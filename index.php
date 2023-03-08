@@ -79,15 +79,15 @@
     <h1 class="h2">Jogos do Momento</h1>
     <div class="content-all">
         <div class="content-carrousel">
-         <figure class="shadow"><img src="https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png" /></figure>
+        <figure class="shadow"><img src="./img/God_of_War_2018_capa.png" /></figure>
       <figure class="shadow"><img src="https://s2.glbimg.com/nDA7_-T6EEElZZZgwnPIPAVfJTQ=/696x390/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/C/U/DMgaFjTAC5JJg62W1PdQ/minecraft-launcher-homenagem-technoblade-porco-coroa.jpg" /></figure>
-      <figure class="shadow"><img src="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000016330/d94d2186ef03c930392253c83c84af0c73b7e57cd902a526b09b4155a25930fe" /></figure>
+      <figure class="shadow"><img src="./img/wallpapersden.com_fifa-23-gaming_1920x1080.jpg" /></figure>
       <figure class="shadow"><img src="https://upload.wikimedia.org/wikipedia/pt/b/be/The_Last_of_Us_capa.png" /></figure>
       <figure class="shadow"><img src="https://osurtododia.com.br/wp-content/uploads/2020/08/fall-guys.jpg" /></figure>
-      <figure class="shadow"><img src="https://cdn.akamai.steamstatic.com/steam/apps/108600/capsule_616x353.jpg?t=1644611871" /></figure>
+      <figure class="shadow"><img src="./img/wp6264020.jpg" /></figure>
       <figure class="shadow"><img src="https://dropsdejogos.uai.com.br/wp-content/uploads/sites/10/2022/06/divulgacao-mineirinho-2-reproducao-950x534.jpg" /></figure>
       <figure class="shadow"><img src="https://cdn.maioresemelhores.com/imagens/mm-games-19-cke.jpg" /></figure>
-      <figure class="shadow"><img src="https://image.api.playstation.com/vulcan/ap/rnd/202209/2815/SSru3b0CYWviMXfW6bYgaWlX.png" /></figure>
+      <figure class="shadow"><img src="./img/watchdogs1-hero-mobile-v2.webp" /></figure>
         </div>
     </div>
 </section>
@@ -105,36 +105,38 @@
 
 
 <section class="hero-section">
-    <div class="card-grid">
-      <a class="card" href="#">
-        <div class="card__background" style="background-image: url(https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png)"></div>
-        <div class="card__content">
-          <p class="card__category">PS5</p>
-          <h3 class="card__heading">God of war Ragnarok - R$249,99</h3>
+<?php 
+    include("conexao.php");
+    $sql = "SELECT * FROM jogo";
+
+
+    $res = $conn->query($sql);
+
+    $qtd = $res->num_rows; 
+
+    if($qtd > 0 ) {
+    
+    while($row = $res->fetch_object()){
+    
+        print "<div class='card-grid'>
+      <a class='card' href='pagamento.php'>
+        <div class='card__background' ><img src='./img/$row->img' class='img' /></div>
+        <div class='card__content'>
+          <p class='card__category'> $row->Console</p>
+          <h3 class='card__heading'>$row->Nome - R$ $row->Preco</h3>
+          <p class='card__category'> $row->Marca</p>
+          <p class='card__category'> $row->Categoria</p>
         </div>
       </a>
-      <a class="card" href="#">
-        <div class="card__background" style="background-image: url(https://images.eshop-prices.com/games/164/480w.jpeg)"></div>
-        <div class="card__content">
-          <p class="card__category">Switch</p>
-          <h3 class="card__heading">Mario Kart deluxe - R$ 299,90</h3>
-        </div>
-      </a>
-      <a class="card" href="#">
-        <div class="card__background" style="background-image: url(https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/phvVT0qZfcRms5qDAk0SI3CM.png)"></div>
-        <div class="card__content">
-          <p class="card__category">Xbox Series X</p>
-          <h3 class="card__heading">Elden Ring - R$ 99,80</h3>
-        </div>
-      </li>
-      <a class="card" href="#">
-        <div class="card__background" style="background-image: url(https://image.api.playstation.com/cdn/UP9000/CUSA00068_00/F1mrq05QV9XXLKTtNpnKfIhOOTDicrDr.png)"></div>
-        <div class="card__content">
-          <p class="card__category">PS4</p>
-          <h3 class="card__heading">Knak - R$ 98,90</h3>
-        </div>
-      </a>
-    <div>
+
+      ".$_SESSION['id_jogo'] = $row->idjogo; "
+      
+      
+    <div>";
+     } 
+    } else {
+        print "<p> Não encontrou resultados </p>";
+    } ?>
   </section>
 
   <footer class="site-footer">

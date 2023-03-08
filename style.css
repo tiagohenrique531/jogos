@@ -11,6 +11,11 @@
 
 }
 
+.img {
+  width: 282px;
+  height: 421px;
+}
+
 /*nav bar 1*/
 .iconb{
     width: 100px;
@@ -391,7 +396,7 @@
     right: 0;
     top: 0;
     transform-origin: center;
-    trsnsform: scale(1) translateZ(0);
+    transform: scale(1) translateZ(0);
     transition: 
       filter 200ms linear,
       transform 200ms linear;

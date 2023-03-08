@@ -13,7 +13,7 @@ if(($resultado_user) AND ($resultado_user->num_rows != 0 )){
         echo "</br></br></br></br></br>
         <div class='card-grid'>
         <a class='card' href='pagamento.php'>
-          <div class='card__background' style='background-image: url(".$row_user['img'].")'></div>
+          <div class='card__background'><img class='img' src='./img/".$row_user['img']."'  /></div>
           <div class='card__content'>
             <p class='card__category'>" .$row_user['Console']."</p>
             <h3 class='card__heading'>".$row_user['Nome'] ."- ". $row_user['Preco']."</h3>
